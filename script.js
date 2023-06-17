@@ -55,3 +55,9 @@ submitForm.addEventListener('click', function(event){
 
     event.preventDefault();
 })
+
+let myLibrary = [];
+
+function addBooktoLibrary(){
+    myLibrary.push(new Book(title,author,pages,read));
+}
