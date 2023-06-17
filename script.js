@@ -61,3 +61,59 @@ let myLibrary = [];
 function addBooktoLibrary(){
     myLibrary.push(new Book(title,author,pages,read));
 }
+
+let card;
+let deleteBookBtn;
+let cardContainer = document.querySelector(".cardContainer");
+let lastIndex;
+let index;
+let readStatus
+
+
+function displayBooks() {
+    lastIndex = myLibrary.length-1;
+
+    createCard()
+}
+
+function createCard(){
+    card = document.createElement("div");
+    card.setAttribute("id", lastIndex);
+            
+    let paraTitle;
+    let paraAuthor;
+    let paraPages;
+    let paraRead;
+
+    paraTitle = document.createElement("p");
+    paraTitle.textContent = myLibrary[lastIndex].oTitle;
+
+    paraAuthor = document.createElement("p");
+    paraAuthor.textContent = myLibrary[lastIndex].oAuthor;
+
+    paraPages = document.createElement("p");
+    paraPages.textContent = myLibrary[lastIndex].oPages;
+
+    paraRead = document.createElement("p");
+    paraRead.textContent = myLibrary[lastIndex].oRead ? "Already Read" : "Not read yet";
+    
+    readStatus = document.createElement("button");
+    customizeReadBtn();
+    readStatus.addEventListener('click', function(e){
+        changeReadStatus(e.target.parentNode.id, paraRead);
+    })
+
+    deleteBookBtn = document.createElement("button");
+    customizeDelBtn();
+    deleteBookBtn.addEventListener('click', function(e){
+        deleteBook(e.target.parentNode.id);
+    })
+    
+    card.appendChild(paraTitle);
+    card.appendChild(paraAuthor);
+    card.appendChild(paraPages);
+    card.appendChild(paraRead);
+    card.appendChild(readStatus);
+    card.appendChild(deleteBookBtn);
+    cardContainer.appendChild(card);
+}
