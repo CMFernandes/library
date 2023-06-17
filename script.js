@@ -117,3 +117,24 @@ function createCard(){
     card.appendChild(deleteBookBtn);
     cardContainer.appendChild(card);
 }
+
+function customizeDelBtn(){
+    let tmpValue = "delButton" + lastIndex;
+    deleteBookBtn.setAttribute("id", tmpValue);
+    deleteBookBtn.innerText = "delete";
+}
+
+function customizeReadBtn(){
+    readStatus.innerText = "change read status";
+}
+
+function changeReadStatus(index, paraRead){
+    myLibrary[index].oRead = !myLibrary[index].oRead;
+    paraRead.textContent = myLibrary[index].oRead ? "Already Read" : "Not read yet";
+}
+
+function deleteBook(index){
+    myLibrary.splice(index,1);
+    let cardToDel = document.getElementById(index);
+    cardToDel.remove();
+}    
