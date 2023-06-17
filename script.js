@@ -138,3 +138,19 @@ function deleteBook(index){
     let cardToDel = document.getElementById(index);
     cardToDel.remove();
 }    
+
+let newBookBtn = document.querySelector(".newBookBtn");
+let bookForm = document.querySelector("#bookForm");
+
+newBookBtn.addEventListener('click', function(){
+    bookForm.style.display = "block";
+    newBookBtn.style.display = "none";
+    clearInputs();
+});
+
+function clearInputs(){
+    document.getElementById("title").value = "";
+    document.getElementById("author").value = "";
+    document.getElementById("pages").value = "";
+    document.getElementById("read").checked = false;
+}
