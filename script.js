@@ -89,10 +89,10 @@ function createCard(){
     paraTitle.textContent = myLibrary[lastIndex].oTitle;
 
     paraAuthor = document.createElement("p");
-    paraAuthor.textContent = myLibrary[lastIndex].oAuthor;
+    paraAuthor.textContent = "By: " + myLibrary[lastIndex].oAuthor;
 
     paraPages = document.createElement("p");
-    paraPages.textContent = myLibrary[lastIndex].oPages;
+    paraPages.textContent = "Number of pages:" + myLibrary[lastIndex].oPages;
 
     paraRead = document.createElement("p");
     paraRead.textContent = myLibrary[lastIndex].oRead ? "Already Read" : "Not read yet";
