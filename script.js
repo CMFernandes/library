@@ -79,7 +79,7 @@ function displayBooks() {
 function createCard(){
     card = document.createElement("div");
     card.setAttribute("id", lastIndex);
-            
+    card.classList.add("card");
     let paraTitle;
     let paraAuthor;
     let paraPages;
