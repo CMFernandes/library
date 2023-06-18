@@ -38,4 +38,16 @@ h1{
     background-color: rgb(136, 133, 133);
 }
 
+.card{
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(216, 216, 216);
+}
 
+.card > p{
+    padding-bottom: 5px;
+}
+.card p:first-child{
+    font-size: 1.6rem;
+}
