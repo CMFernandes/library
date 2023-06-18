@@ -80,6 +80,7 @@ function createCard(){
     card = document.createElement("div");
     card.setAttribute("id", lastIndex);
     card.classList.add("card");
+
     let paraTitle;
     let paraAuthor;
     let paraPages;
@@ -96,6 +97,7 @@ function createCard(){
 
     paraRead = document.createElement("p");
     paraRead.textContent = myLibrary[lastIndex].oRead ? "Already Read" : "Not read yet";
+    changeBorder(myLibrary[lastIndex].oRead,card)
     
     readStatus = document.createElement("button");
     customizeReadBtn();
@@ -109,6 +111,10 @@ function createCard(){
         deleteBook(e.target.parentNode.id);
     })
     
+    appendCard(paraTitle,paraAuthor,paraPages,paraRead,readStatus,deleteBookBtn);
+}
+
+function appendCard(paraTitle,paraAuthor,paraPages,paraRead,readStatus,deleteBookBtn){
     card.appendChild(paraTitle);
     card.appendChild(paraAuthor);
     card.appendChild(paraPages);
@@ -118,6 +124,13 @@ function createCard(){
     cardContainer.appendChild(card);
 }
 
+function changeBorder(oRead,card){
+    if(oRead === true){
+        card.style.border = "green solid 1px"
+    }else{
+        card.style.border = "red solid 1px"
+    }
+}
 function customizeDelBtn(){
     let tmpValue = "delButton" + lastIndex;
     deleteBookBtn.setAttribute("id", tmpValue);
@@ -131,6 +144,8 @@ function customizeReadBtn(){
 function changeReadStatus(index, paraRead){
     myLibrary[index].oRead = !myLibrary[index].oRead;
     paraRead.textContent = myLibrary[index].oRead ? "Already Read" : "Not read yet";
+    
+    changeBorder(myLibrary[lastIndex].oRead,card);
 }
 
 function deleteBook(index){
