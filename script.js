@@ -94,7 +94,7 @@ function createCard(){
     paraAuthor.textContent = "By: " + myLibrary[lastIndex].oAuthor;
 
     paraPages = document.createElement("p");
-    paraPages.textContent = "Number of pages:" + myLibrary[lastIndex].oPages;
+    paraPages.textContent = myLibrary[lastIndex].oPages + " pages" ;
 
     paraRead = document.createElement("p");
     paraRead.textContent = myLibrary[lastIndex].oRead ? "Already Read" : "Not read yet";
@@ -130,18 +130,20 @@ function appendCard(paraTitle,paraAuthor,paraPages,paraRead,readStatus,deleteBoo
 function changeBorder(oRead,card){
     if(oRead === true){
         card.style.border = "green solid 1px"
+        card.style.boxShadow = "0px 2px 13px 3px rgba(140, 168, 136, 0.27)"
     } else {
         card.style.border = "red solid 1px"
+        card.style.boxShadow = "0px 2px 13px 3px rgba(172, 119, 119, 0.27)"
     }
 }
 function customizeDelBtn(){
     let tmpValue = "delButton" + lastIndex;
     deleteBookBtn.setAttribute("id", tmpValue);
-    deleteBookBtn.innerText = "delete";
+    deleteBookBtn.innerText = "Delete";
 }
 
 function customizeReadBtn(){
-    readStatus.innerText = "change read status";
+    readStatus.innerText = "Change read status";
 }
 
 function changeReadStatus(id, paraRead){
