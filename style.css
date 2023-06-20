@@ -4,13 +4,12 @@
     margin: 0;
     padding: 0;
     font-family: 'roboto', sans-serif;
-
 }
 
-body{
-    max-width: 70%;
-    margin-right: auto;
-    margin-left: auto;
+.header{
+    position: relative; 
+    padding-bottom: 2.5rem;
+    box-shadow: 0px 7px 9px -1px rgba(0,0,0,0.31);
 }
 
 h1{
@@ -19,6 +18,13 @@ h1{
     font-size:40px;
 }
 
+.formContainer{
+    display: flex;
+    justify-content: center;
+}
+form > label{
+    margin: 10px;
+}
 .newBookCont{
     display: flex;
     width: 80%;
@@ -31,23 +37,73 @@ h1{
     font-size: large;
     border: none;
     border-radius: 5px;
-    padding: 10px;
+    padding: 5px;
 }
 
 .newBookBtn:hover{
     background-color: rgb(136, 133, 133);
 }
 
+
+.cardContainer{
+    
+}
+
+.cardContent{
+    width: 100vw;
+    height: 100vh;
+    background-color: rgb(221, 219, 219);
+}
+
+.cardContainer{
+    display: grid;
+    grid-template-columns: repeat(auto-fill,minmax(250px, 1fr));
+    gap: 30px;
+
+    max-width: 70%;
+    margin-right: auto;
+    margin-left: auto;
+    padding-top: 3rem;
+}
 .card{
     padding: 20px;
     display: flex;
     flex-direction: column;
-    background-color: rgb(216, 216, 216);
+    background-color: rgb(255, 255, 255);
+
+    border-radius: 5px;
 }
 
 .card > p{
-    padding-bottom: 5px;
+    padding-bottom: 10px;
 }
 .card p:first-child{
     font-size: 1.6rem;
 }
+
+.card >button{
+    align-self: flex-start;
+    padding: 10px;
+    border-radius: 5px;
+
+    border: none;
+    background-color: rgb(192, 189, 189);
+    
+}
+
+.card button:nth-child(5){
+    margin-top: 10px;
+    margin-bottom: 15px;
+}
+
+.card button:nth-child(5):hover{
+    background-color: rgb(114, 112, 112);
+}
+
+.card >button:nth-child(6):hover{
+    border: rgb(219, 73, 73) solid 1px ;
+    background-color: rgb(219, 73, 73);
+
+}
+
+
