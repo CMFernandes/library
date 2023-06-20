@@ -1,9 +1,9 @@
-function Book(title,author,pages,read){
+function Book(title,author,pages,read,bookIndex){
     this.oTitle = title;
     this.oAuthor = author;
     this.oPages = pages;
     this.oRead = read;
-    this.BookIndex = bookIndex
+    this.bookIndex = bookIndex;
 }
 
 function validateForm(){
@@ -26,7 +26,7 @@ let title
 let author;
 let pages;
 let read;
-
+let bookIndex = 0;
 let submitForm = document.getElementById("submitBtn");
 
 submitForm.addEventListener('click', function(event){
@@ -53,13 +53,14 @@ submitForm.addEventListener('click', function(event){
     bookForm.style.display = "none";
     newBookBtn.style.display = "block";
 
+    bookIndex++;
     event.preventDefault();
 })
 
 let myLibrary = [];
 
 function addBooktoLibrary(){
-    myLibrary.push(new Book(title,author,pages,read));
+    myLibrary.push(new Book(title,author,pages,read,bookIndex));
 }
 
 let card;
@@ -78,8 +79,7 @@ function displayBooks() {
 
 function createCard(){
     card = document.createElement("div");
-    card.setAttribute("id", lastIndex);
-    card.setAttribute(data)
+    card.setAttribute("data-id", bookIndex);
     card.classList.add("card");
 
     let paraTitle;
@@ -99,24 +99,19 @@ function createCard(){
     paraRead = document.createElement("p");
     paraRead.textContent = myLibrary[lastIndex].oRead ? "Already Read" : "Not read yet";
     
-    /*if(myLibrary[lastIndex].oRead === true){
-        card.style.border = "green solid 1px"
-    }else{
-        card.style.border = "red solid 1px"
-    }*/
 
     changeBorder(myLibrary[lastIndex].oRead, card);
-
+    
     readStatus = document.createElement("button");
     customizeReadBtn();
     readStatus.addEventListener('click', function(e){
-        changeReadStatus(e.target.parentNode.id, paraRead);
+        changeReadStatus(e.target.parentNode.dataset.id, paraRead);
     })
 
     deleteBookBtn = document.createElement("button");
     customizeDelBtn();
     deleteBookBtn.addEventListener('click', function(e){
-        deleteBook(e.target.parentNode.id);
+        deleteBook(e.target.parentNode.dataset.id);
     })
     
     appendCard(paraTitle,paraAuthor,paraPages,paraRead,readStatus,deleteBookBtn);
@@ -149,27 +144,25 @@ function customizeReadBtn(){
     readStatus.innerText = "change read status";
 }
 
-function changeReadStatus(index, paraRead){
-    myLibrary[index].oRead = !myLibrary[index].oRead;
-    let read = myLibrary[index].oRead
-    console.log(read)
+function changeReadStatus(id, paraRead){
+    myLibrary[id].oRead = !myLibrary[id].oRead;
+
+    let read = myLibrary[id].oRead
     paraRead.textContent = read ? "Already Read" : "Not read yet";
     
-    let card = document.getElementById(index);
+    let card = document.querySelector(`[data-id="${id}"]`);
 
-    changeBorder(read, card);
-
-    /*if(myLibrary[index].oRead === true){
-        card.style.border = "green solid 1px"
-    }else{
-        card.style.border = "red solid 1px"
-    }*/
+    changeBorder(read,card);
 }
 
-function deleteBook(index){
-    myLibrary.splice(index,1);
-    let cardToDel = document.getElementById(index);
-    cardToDel.remove();
+function deleteBook(id){
+    for(let i = 0; i < myLibrary.length; i++){
+        if(myLibrary[i].bookIndex == id){
+            myLibrary.splice(i,1);
+            let cardToDel = document.querySelector(`[data-id="${id}"]`);
+            cardToDel.remove();
+        }
+    }
 }    
 
 let newBookBtn = document.querySelector(".newBookBtn");
