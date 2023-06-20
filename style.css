@@ -25,20 +25,28 @@ h1{
 .formContainer{
     display: flex;
     justify-content: center;
+    padding: 20px;
 }
 
 form > label{
     margin: 10px;
+    font-size: 1.1rem;
+}
+
+form > input{
+    font-size: 0.9rem;
 }
 
 form > button{
-    padding: 5px;
+    padding: 5px 10px;
+    font-size: 1rem;
     margin-left: 20px;
+    border-radius: 5px;
 }
 
 form > button:hover{
     background-color: var(--hoover-color);
-    border: var(--hoover-color) solid 1px;
+    border: var(--hoover-color) solid 2px;
 }
 .newBookCont{
     display: flex;
@@ -111,7 +119,6 @@ form > button:hover{
 }
 
 .card >button:nth-child(6):hover{
-    border: rgb(219, 73, 73) solid 1px ;
     background-color: rgb(219, 73, 73);
 
 }
