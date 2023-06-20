@@ -3,6 +3,7 @@ function Book(title,author,pages,read){
     this.oAuthor = author;
     this.oPages = pages;
     this.oRead = read;
+    this.BookIndex = bookIndex
 }
 
 function validateForm(){
@@ -35,7 +36,6 @@ submitForm.addEventListener('click', function(event){
     pages = document.getElementById("pages").value;
 
     if(!validateForm()){
-
         return 
     }
 
@@ -79,6 +79,7 @@ function displayBooks() {
 function createCard(){
     card = document.createElement("div");
     card.setAttribute("id", lastIndex);
+    card.setAttribute(data)
     card.classList.add("card");
 
     let paraTitle;
@@ -97,8 +98,15 @@ function createCard(){
 
     paraRead = document.createElement("p");
     paraRead.textContent = myLibrary[lastIndex].oRead ? "Already Read" : "Not read yet";
-    changeBorder(myLibrary[lastIndex].oRead,card)
     
+    /*if(myLibrary[lastIndex].oRead === true){
+        card.style.border = "green solid 1px"
+    }else{
+        card.style.border = "red solid 1px"
+    }*/
+
+    changeBorder(myLibrary[lastIndex].oRead, card);
+
     readStatus = document.createElement("button");
     customizeReadBtn();
     readStatus.addEventListener('click', function(e){
@@ -127,7 +135,7 @@ function appendCard(paraTitle,paraAuthor,paraPages,paraRead,readStatus,deleteBoo
 function changeBorder(oRead,card){
     if(oRead === true){
         card.style.border = "green solid 1px"
-    }else{
+    } else {
         card.style.border = "red solid 1px"
     }
 }
@@ -143,9 +151,19 @@ function customizeReadBtn(){
 
 function changeReadStatus(index, paraRead){
     myLibrary[index].oRead = !myLibrary[index].oRead;
-    paraRead.textContent = myLibrary[index].oRead ? "Already Read" : "Not read yet";
+    let read = myLibrary[index].oRead
+    console.log(read)
+    paraRead.textContent = read ? "Already Read" : "Not read yet";
     
-    changeBorder(myLibrary[lastIndex].oRead,card);
+    let card = document.getElementById(index);
+
+    changeBorder(read, card);
+
+    /*if(myLibrary[index].oRead === true){
+        card.style.border = "green solid 1px"
+    }else{
+        card.style.border = "red solid 1px"
+    }*/
 }
 
 function deleteBook(index){
