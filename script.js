@@ -1,9 +1,11 @@
-function Book(title,author,pages,read,bookIndex){
-    this.oTitle = title;
-    this.oAuthor = author;
-    this.oPages = pages;
-    this.oRead = read;
-    this.bookIndex = bookIndex;
+class Book{
+    constructor(title,author,pages,read,bookIndex){
+        this.oTitle = title;
+        this.oAuthor = author;
+        this.oPages = pages;
+        this.oRead = read;
+        this.bookIndex = bookIndex;
+    }
 }
 
 function validateForm(){
@@ -11,7 +13,6 @@ function validateForm(){
 
     if (title === ""){
         isValid = false;
-        title.cl
     } 
     if (author === ""){
         isValid = false; 
